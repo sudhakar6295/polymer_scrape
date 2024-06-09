@@ -110,8 +110,8 @@ class PolymershapesSpider(Spider):
         breadcrumbs = response.xpath('//nav/a/text()').extract()
         breadcrumb = ", ".join(breadcrumbs)
         descriptions = response.xpath('//div[@id="tab-description"]').get()
-        if descriptions:
-            descriptions = self.clean_description(descriptions)
+        #if descriptions:
+            #descriptions = self.clean_description(descriptions)
         try:
             short_description = response.xpath('//div[@class="product-short-description"]//text()').extract()
             if short_description:
