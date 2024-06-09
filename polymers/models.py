@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, Integer, String,TEXT
+from sqlalchemy import Column, DateTime, Integer, String,TEXT,JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine,ForeignKey
 from sqlalchemy.orm import sessionmaker
@@ -18,7 +18,7 @@ class Products(Base):
     product_title = Column(String(255))
     normal_price =Column(String(50))
     discount_price = Column(String(50))
-    stock = Column(String(50))
+    stock = Column(JSON)
     categories = Column(String(255))
     subcategories = Column(String(255))
     breadcrumb = Column(String(255))
