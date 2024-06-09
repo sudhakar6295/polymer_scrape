@@ -86,13 +86,13 @@ class PolymershapesSpider(Spider):
 
         self.save_image(images)
 
-        stock = response.xpath('//p[@class="stock in-stock"]/text()').extract_first()
-        stock_dict = {}
         stock_rows = response.xpath('.//*[@id="slw_item_stock_location_simple_product"]//option')
+        stock_dict = {}
         for stock_row in stock_rows:
             qty = stock_row.xpath('.//@data-quantity').get()
             option = stock_row.xpath('.//text()').get()
             price = stock_row.xpath('.//@data-price').get()
+            prioirty = stock_row.xpath('.//@data-priority').get()
             
             if 'Seleccionar' in option:
                 continue
@@ -100,6 +100,8 @@ class PolymershapesSpider(Spider):
             stock_dict[option] = {}
             stock_dict[option]['qty'] = qty
             stock_dict[option]['price'] = price
+            if prioirty:
+                stock_dict[option]['prioirty'] = prioirty
         sku = response.xpath('//span[@class="sku"]/text()').extract_first()
         categories_lst = response.xpath('//*[@class="woocommerce-breadcrumb breadcrumbs uppercase"]/a/text()').extract()
         
