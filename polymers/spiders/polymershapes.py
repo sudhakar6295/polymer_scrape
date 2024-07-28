@@ -147,8 +147,6 @@ class PolymershapesSpider(Spider):
             images = []
             main_image_url = None
 
-        if not stock_dict:
-            stock_dict = {"Santiago": {"qty": "Sin existencias"}}
   
 
 
