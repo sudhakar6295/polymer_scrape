@@ -5,7 +5,7 @@
 
 
 # useful for handling different item types with a single interface
-
+from datetime import datetime,timezone
 from itemadapter import ItemAdapter
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -40,6 +40,9 @@ class PolymersPipeline:
                 record.subcategories = item['subcategories']
                 record.short_description = item['short_description']
                 record.descriptions = item['descriptions']
+
+                record.LastScrappeddate = datetime.now(timezone.utc)
+                record.Updateddate = datetime.now(timezone.utc)
                 
                 # Commit the changes to the database
                 session.commit()
