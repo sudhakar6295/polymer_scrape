@@ -108,6 +108,7 @@ class PolymershapesSpider(Spider):
             stock_dict[option]['price'] = price
             if prioirty:
                 stock_dict[option]['prioirty'] = prioirty
+
         sku = response.xpath('//span[@class="sku"]/text()').extract_first()
         categories_lst = response.xpath('//*[@class="woocommerce-breadcrumb breadcrumbs uppercase"]/a/text()').extract()
         
@@ -146,7 +147,8 @@ class PolymershapesSpider(Spider):
             images = []
             main_image_url = None
 
-        
+        if not stock_dict:
+            stock_dict = {"Santiago": {"qty": "Sin existencias"}}
   
 
 
