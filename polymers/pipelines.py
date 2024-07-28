@@ -65,8 +65,8 @@ class PolymersPipeline:
                 approximate_weight = item['approximate_weight'],
                 descriptions = item['descriptions'],
                 short_description = item['short_description'],
-                main_image_url = item['main_image_url']
-                record.Createddate = datetime.now(timezone.utc)
+                main_image_url = item['main_image_url'],
+                Createddate = datetime.now(timezone.utc)
                   )
                 
                 # Add more columns and values as needed
