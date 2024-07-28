@@ -40,7 +40,6 @@ class PolymersPipeline:
                 record.subcategories = item['subcategories']
                 record.short_description = item['short_description']
                 record.descriptions = item['descriptions']
-
                 record.LastScrappeddate = datetime.now(timezone.utc)
                 record.Updateddate = datetime.now(timezone.utc)
                 
@@ -67,6 +66,7 @@ class PolymersPipeline:
                 descriptions = item['descriptions'],
                 short_description = item['short_description'],
                 main_image_url = item['main_image_url']
+                record.Createddate = datetime.now(timezone.utc)
                   )
                 
                 # Add more columns and values as needed
