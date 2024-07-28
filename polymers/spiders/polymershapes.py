@@ -72,6 +72,12 @@ class PolymershapesSpider(Spider):
         except:
             return None
         return None
+    
+    def clean_price(self,price):
+        if not price:
+            return price
+        price = price.replace('El precio original era:','').replace('El precio actual es:','').strip()
+        return price
 
 
     def parse_product(self, response):
@@ -139,6 +145,8 @@ class PolymershapesSpider(Spider):
         else:
             images = []
             main_image_url = None
+
+        
   
 
 
@@ -147,8 +155,8 @@ class PolymershapesSpider(Spider):
             "product_title": product_title,
             "sku": sku,
             "images": images,
-            "normal_price": normal_price,
-            "discount_price": discount_price,
+            "normal_price": self.clean_price(normal_price),
+            "discount_price": self.clean_price(discount_price),
             "stock": stock_dict,
             "categories": categories,
             "subcategories": subcategories,
